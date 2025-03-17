@@ -5,14 +5,14 @@ steps:
       [
         "build",
         "-t",
-        "us-central1-docker.pkg.dev/$PROJECT_ID/my-repo/container2:latest",
+        "us-central1-docker.pkg.dev/$PROJECT_ID/my-repo/container2:$COMMIT_SHA",
         ".",
       ]
   - name: "gcr.io/cloud-builders/docker"
     args:
       [
         "push",
-        "us-central1-docker.pkg.dev/$PROJECT_ID/my-repo/container2:latest",
+        "us-central1-docker.pkg.dev/$PROJECT_ID/my-repo/container2:$COMMIT_SHA",
       ]
   - name: "gcr.io/cloud-builders/gcloud"
     entrypoint: "bash"
@@ -20,4 +20,4 @@ steps:
       - "-c"
       - |
         gcloud container clusters get-credentials my-cluster --zone us-central1-a --project $PROJECT_ID
-        kubectl set image deployment/container2 container2=us-central1-docker.pkg.dev/$PROJECT_ID/my-repo/container2:latest
+        kubectl set image deployment/container2 container2=us-central1-docker.pkg.dev/$PROJECT_ID/my-repo/container2:$COMMIT_SHA
