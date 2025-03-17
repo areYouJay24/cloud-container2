@@ -6,7 +6,6 @@ const csv = require("csv-parser");
 const app = express();
 app.use(bodyParser.json());
 
-// test comment
 
 app.post("/calculate", (req, res) => {
     const { file, product } = req.body;
