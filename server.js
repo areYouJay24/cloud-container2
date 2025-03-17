@@ -31,7 +31,9 @@ app.post("/calculate", (req, res) => {
     let headerChecked = false;
 
     fs.createReadStream(filePath)
-        .pipe(csv())
+        .pipe(csv({
+            mapHeaders: ({ header }) => header.trim().toLowerCase()
+        }))
         .on("headers", (headers) => {
             headerChecked = true;
             hasValidFormat = headers.includes("product") && headers.includes("amount");
