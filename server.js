@@ -6,9 +6,7 @@ const csv = require("csv-parser");
 const app = express();
 app.use(bodyParser.json());
 
-// Test CICD container 2
-// Test CICD container 2
-// Test CICD container 2
+// Test CICD container 2 test
 
 app.post("/calculate", (req, res) => {
     const { file, product } = req.body;
