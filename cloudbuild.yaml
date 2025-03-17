@@ -1,3 +1,4 @@
+logsBucket: "gs://cloud-a3-jaykumar-logs"
 steps:
   - name: "gcr.io/cloud-builders/docker"
     args:
